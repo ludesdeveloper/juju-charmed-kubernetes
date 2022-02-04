@@ -25,57 +25,26 @@ sudo snap install kubectl --classic
 ```
 pip3 install boto3
 ```
-4. Juju installed
+5. Juju installed
 ```
 sudo snap install juju --classic
 ```
 ### **How To**
-1. Bootstrap Controller
+1. Clone repo
+```
+git clone https://github.com/ludesdeveloper/juju-charmed-kubernetes.git
+```
+2. Change directory
+```
+cd juju-charmed-kubernetes
+```
+3. Bootstrap Controller
 ```
 juju bootstrap aws aws-controller
 ```
-2. Add k8s model
+4. Add k8s model
 ```
 juju add-model k8s
-```
-3. Download or Create file aws-overlay.yaml
-```
-wget https://raw.githubusercontent.com/ludesdeveloper/juju-charmed-kubernetes/master/aws-overlay.yaml
-```
-```
-description: Charmed Kubernetes overlay to add native AWS support.
-applications:
-  aws-integrator:
-    annotations:
-      gui-x: "600"
-      gui-y: "300"
-    charm: cs:~containers/aws-integrator
-    num_units: 1
-    trust: true
-relations:
-  - ['aws-integrator', 'kubernetes-master']
-  - ['aws-integrator', 'kubernetes-worker']
-```
-4. Download or Create file calico-overlay.yaml
-```
-wget https://raw.githubusercontent.com/ludesdeveloper/juju-charmed-kubernetes/master/calico-overlay.yaml
-```
-```
-description: Charmed Kubernetes overlay to add Calico CNI.
-applications:
-  calico:
-    annotations:
-      gui-x: '480'
-      gui-y: '750'
-    charm: cs:~containers/calico
-  flannel:
-relations:
-- - calico:etcd
-  - etcd:db
-- - calico:cni
-  - kubernetes-master:cni
-- - calico:cni
-  - kubernetes-worker:cni
 ```
 5. Deploy Charmed Kubernetes with overlay
 ```
