@@ -2,9 +2,13 @@
 ### **Requirements**
 1. [AWS CLI installed](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 2. [Configure AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config)
-3. Kubectl Installed
+3. Kubectl installed
 ```
 sudo snap install kubectl --classic
+```
+4. Juju installed
+```
+sudo snap install juju --classic
 ```
 ### **How To**
 1. Bootstrap Controller
