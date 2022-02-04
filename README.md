@@ -1,0 +1,69 @@
+# **Juju Charmed Kubernetes**
+### **How To**
+1. Bootstrap Controller
+```
+juju bootstrap aws my-controller
+```
+2. Add k8s model
+```
+juju add-model k8s
+```
+3. Create file aws-overlay.yaml
+```
+description: Charmed Kubernetes overlay to add native AWS support.
+applications:
+  aws-integrator:
+    annotations:
+      gui-x: "600"
+      gui-y: "300"
+    charm: cs:~containers/aws-integrator
+    num_units: 1
+    trust: true
+relations:
+  - ['aws-integrator', 'kubernetes-master']
+  - ['aws-integrator', 'kubernetes-worker']
+```
+4. Create file calico-overlay.yaml
+```
+description: Charmed Kubernetes overlay to add Calico CNI.
+applications:
+  calico:
+    annotations:
+      gui-x: '480'
+      gui-y: '750'
+    charm: cs:~containers/calico
+  flannel:
+relations:
+- - calico:etcd
+  - etcd:db
+- - calico:cni
+  - kubernetes-master:cni
+- - calico:cni
+  - kubernetes-worker:cni
+```
+5. Deploy Charmed Kubernetes with overlay
+```
+juju deploy charmed-kubernetes --overlay aws-overlay.yaml --trust --overlay calico-overlay.yaml
+```
+6. Watch process
+```
+watch -c juju status --color
+```
+7. Install kubectl
+```
+sudo snap install kubectl --classic
+```
+8. Install aws cli
+9. Copy kubeconfig
+```
+juju scp kubernetes-master/0:config ~/.kube/config
+```
+> Create ~/.kube folder if you don't have
+10. Destroy models
+```
+juju destroy-model k8s --timeout=0 --force
+```
+11. Destroy controller
+```
+juju destroy-controller my-controller
+```
