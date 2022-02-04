@@ -30,7 +30,10 @@ juju bootstrap aws aws-controller
 ```
 juju add-model k8s
 ```
-3. Create file aws-overlay.yaml
+3. Download or Create file aws-overlay.yaml
+```
+wget https://raw.githubusercontent.com/ludesdeveloper/juju-charmed-kubernetes/master/aws-overlay.yaml
+```
 ```
 description: Charmed Kubernetes overlay to add native AWS support.
 applications:
@@ -45,7 +48,10 @@ relations:
   - ['aws-integrator', 'kubernetes-master']
   - ['aws-integrator', 'kubernetes-worker']
 ```
-4. Create file calico-overlay.yaml
+4. Download or Create file calico-overlay.yaml
+```
+wget https://raw.githubusercontent.com/ludesdeveloper/juju-charmed-kubernetes/master/calico-overlay.yaml
+```
 ```
 description: Charmed Kubernetes overlay to add Calico CNI.
 applications:
