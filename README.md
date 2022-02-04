@@ -102,9 +102,9 @@ kubectl get pods -n kube-system
 ```
 kubectl get deployment -n kube-system
 ```
-11. Restart all deployment in kube-system except for calic
+11. Restart all deployment in kube-system except for calico, i prepare script for this
 ```
-kubectl rollout restart deployment/deployment_name
+./rollout_restart.sh
 ```
 > Create ~/.kube folder if you don't have
 ### **Clean Up**
