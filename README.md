@@ -17,6 +17,10 @@ aws configure
 ```
 sudo snap install kubectl --classic
 ```
+4. [Boto3 installed](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html)
+```
+pip3 install boto3
+```
 4. Juju installed
 ```
 sudo snap install juju --classic
