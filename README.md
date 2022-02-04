@@ -81,13 +81,13 @@ relations:
 ```
 juju deploy charmed-kubernetes --overlay aws-overlay.yaml --trust --overlay calico-overlay.yaml
 ```
-6. Disable source check destination on ec2(I use boto3 to do this)
-```
-python3 ec2_disable_source_check_destination.py 
-```
-7. Watch process
+6. Watch process
 ```
 watch -c juju status --color
+```
+7. Disable source check destination on ec2(I use boto3 to do this)
+```
+python3 ec2_disable_source_check_destination.py 
 ```
 8. Copy kubeconfig
 ```
