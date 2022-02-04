@@ -1,4 +1,4 @@
-# **Juju Charmed Kubernetes Calico**
+# **Juju Charmed Kubernetes (Using Calico) on AWS**
 <p align="center">
 <img src="pic/ludes.png" width="500">
 </p>
