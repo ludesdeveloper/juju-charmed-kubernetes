@@ -80,9 +80,13 @@ juju scp kubernetes-master/0:config ~/.kube/config
 ### **Clean Up**
 1. Destroy models
 ```
+juju destroy-model k8s
+```
+2. Forced Destroy models
+```
 juju destroy-model k8s --timeout=0 --force
 ```
-2. Destroy controller
+3. Destroy controller
 ```
 juju destroy-controller aws-controller
 ```
