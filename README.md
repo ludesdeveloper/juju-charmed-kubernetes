@@ -81,17 +81,30 @@ relations:
 ```
 juju deploy charmed-kubernetes --overlay aws-overlay.yaml --trust --overlay calico-overlay.yaml
 ```
-6. Disable source check destination on ec2(I use boto3 to do this)
-```
-python3 ec2_disable_source_check_destination.py 
-```
-7. Watch process
+6. Watch process
 ```
 watch -c juju status --color
+```
+> You can move to step 7 if ec2 already in 2/2 checks passed state
+7. Disable source check destination on ec2(I use boto3 to do this)
+```
+python3 ec2_disable_source_check_destination.py 
 ```
 8. Copy kubeconfig
 ```
 juju scp kubernetes-master/0:config ~/.kube/config
+```
+9. Check kube system
+```
+kubectl get pods -n kube-system
+```
+10. If pod still crashing, get deployment below
+```
+kubectl get deployment -n kube-system
+```
+11. Restart all deployment in kube-system except for calic
+```
+kubectl rollout restart deployment/deployment_name
 ```
 > Create ~/.kube folder if you don't have
 ### **Clean Up**
