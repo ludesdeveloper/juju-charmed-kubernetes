@@ -94,6 +94,18 @@ python3 ec2_disable_source_check_destination.py
 ```
 juju scp kubernetes-master/0:config ~/.kube/config
 ```
+9. Check kube system
+```
+kubectl get pods -n kube-system
+```
+10. If pod still crashing, get deployment below
+```
+kubectl get deployment -n kube-system
+```
+11. Restart all deployment in kube-system except for calic
+```
+kubectl rollout restart deployment/deployment_name
+```
 > Create ~/.kube folder if you don't have
 ### **Clean Up**
 1. Destroy models
