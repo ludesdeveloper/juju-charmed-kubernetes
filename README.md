@@ -99,6 +99,7 @@ juju scp kubernetes-master/0:config ~/.kube/config
 ```
 juju destroy-model k8s
 ```
+> If takes to long, you can ctrl+c then force destroy with command below
 2. Forced Destroy models
 ```
 juju destroy-model k8s --timeout=0 --force
