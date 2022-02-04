@@ -85,6 +85,7 @@ juju deploy charmed-kubernetes --overlay aws-overlay.yaml --trust --overlay cali
 ```
 watch -c juju status --color
 ```
+> You can move to step 7 if ec2 already in 2/2 checks passed state
 7. Disable source check destination on ec2(I use boto3 to do this)
 ```
 python3 ec2_disable_source_check_destination.py 
