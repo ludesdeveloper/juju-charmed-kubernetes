@@ -1,7 +1,15 @@
 # **Juju Charmed Kubernetes**
 ### **Requirements**
 1. [AWS CLI installed](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+```
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
 2. [Configure AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config)
+```
+aws configure
+```
 3. Kubectl installed
 ```
 sudo snap install kubectl --classic
