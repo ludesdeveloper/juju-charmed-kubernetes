@@ -108,3 +108,4 @@ juju destroy-model k8s --timeout=0 --force
 ```
 juju destroy-controller aws-controller
 ```
+> If you get error **The controller has live hosted models** please delete default in model (use "juju models" to take a look all models)
