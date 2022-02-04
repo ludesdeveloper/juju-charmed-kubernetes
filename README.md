@@ -1,4 +1,11 @@
 # **Juju Charmed Kubernetes**
+### **Requirements**
+1. [AWS CLI installed](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+2. [Configure AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config)
+3. Kubectl Installed
+```
+sudo snap install kubectl --classic
+```
 ### **How To**
 1. Bootstrap Controller
 ```
@@ -49,21 +56,18 @@ juju deploy charmed-kubernetes --overlay aws-overlay.yaml --trust --overlay cali
 ```
 watch -c juju status --color
 ```
-7. Install kubectl
-```
-sudo snap install kubectl --classic
-```
-8. Install aws cli
-9. Copy kubeconfig
+7. Install aws cli
+8. Copy kubeconfig
 ```
 juju scp kubernetes-master/0:config ~/.kube/config
 ```
 > Create ~/.kube folder if you don't have
-10. Destroy models
+### **Clean Up**
+1. Destroy models
 ```
 juju destroy-model k8s --timeout=0 --force
 ```
-11. Destroy controller
+2. Destroy controller
 ```
 juju destroy-controller my-controller
 ```
