@@ -1,4 +1,8 @@
 # **Juju Charmed Kubernetes Calico**
+<p align="center">
+<img src="pic/ludes.png" width="500">
+</p>
+
 ### **Requirements**
 1. [AWS CLI installed](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 ```
