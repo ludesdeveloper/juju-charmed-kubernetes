@@ -1,4 +1,4 @@
-# **Juju Charmed Kubernetes**
+# **Juju Charmed Kubernetes Calico**
 ### **Requirements**
 1. [AWS CLI installed](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 ```
@@ -77,11 +77,14 @@ relations:
 ```
 juju deploy charmed-kubernetes --overlay aws-overlay.yaml --trust --overlay calico-overlay.yaml
 ```
-6. Watch process
+6. Disable source check destination on ec2(I use boto3 to do this)
+```
+python3 ec2_disable_source_check_destination.py 
+```
+7. Watch process
 ```
 watch -c juju status --color
 ```
-7. Install aws cli
 8. Copy kubeconfig
 ```
 juju scp kubernetes-master/0:config ~/.kube/config
