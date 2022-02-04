@@ -13,7 +13,7 @@ sudo snap install juju --classic
 ### **How To**
 1. Bootstrap Controller
 ```
-juju bootstrap aws my-controller
+juju bootstrap aws aws-controller
 ```
 2. Add k8s model
 ```
@@ -73,5 +73,5 @@ juju destroy-model k8s --timeout=0 --force
 ```
 2. Destroy controller
 ```
-juju destroy-controller my-controller
+juju destroy-controller aws-controller
 ```
